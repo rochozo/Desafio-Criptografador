@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decodificador de mensagens</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="assets/Frame 6logo.svg" width="120" height="48">
+    </header>
+    <main>
+        <section class="container_textoDecrip">
+            <textarea id="textoOriginal" class="textoDecrip">Digite seu texto</textarea>
+            <img src="assets/Frame 1headsup.svg" class="imagemHeadsup">
+            <div class="container_botoes">
+                <button class="botaoCripto" onclick="criptografarTexto()">Criptografar</button>
+                <button class="botaoDecripto" onclick="descriptografarTexto()">Descriptografar</button>
+            </div>
+        </section>
+        <section class="container_textoCrip">
+            <textarea id="textoCriptografado" class="textoCrip" readonly></textarea>
+            <div class="container_img">
+                <img id="imgSemMSG" class="imgSemMSG" src="assets/Frame 5nomsg.svg">
+            </div>
+            <div class="container_avatar">
+                <img id="avatar" class="avatar" src="assets/High quality products 1 1nomsgavatar.svg">
+            </div>
+            <div class="container_botoesCripto">
+                <button class="botaoCopy hidden" id="botaoCopy" onclick="funcCopy()">Copiar</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <img src="assets/instagram.png">
+        <a class="insta" href="https://www.instagram.com/rochozo/">Instagram</a>
+    </footer>
+    <script>
+        const regrasSubstituicao = {
+            'e': 'enter',
+            'i': 'imes',
+            'o': 'ober',
+            'u': 'ufat',
+            'a': 'ai'
+        };
+
+        const regrasInversao = {
+            'enter': 'e',
+            'imes': 'i',
+            'ober': 'o',
+            'ufat': 'u',
+            'ai': 'a'
+        };
+
+        function criptografar(texto, regras) {
+            let textoCriptografado = "";
+            for (let i = 0; i < texto.length; i++) {
+                const caractereOriginal = texto[i];
+                if (regras.hasOwnProperty(caractereOriginal)) {
+                    textoCriptografado += regras[caractereOriginal];
+                } else {
+                    textoCriptografado += caractereOriginal;
+                }
+            }
+            return textoCriptografado;
+        }
+
+        function descriptografar(texto, regras) {
+            let textoDescriptografado = texto;
+            for (let [substituicao, original] of Object.entries(regras)) {
+                textoDescriptografado = textoDescriptografado.split(substituicao).join(original);
+            }
+            return textoDescriptografado;
+        }
+
+        function criptografarTexto() {
+            const textoOriginal = document.getElementById('textoOriginal').value;
+            if (textoOriginal !== textoOriginal.toLowerCase()) {
+                alert("Por favor, use apenas letras minúsculas.");
+                return;
+            }
+            const textoCriptografado = criptografar(textoOriginal.toLowerCase(), regrasSubstituicao);
+            document.getElementById('textoCriptografado').value = textoCriptografado;
+
+            // Mostrar botão de copiar e esconder imagens e avatar
+            document.getElementById('botaoCopy').classList.remove('hidden');
+            document.getElementById('imgSemMSG').classList.add('hidden');
+            document.getElementById('avatar').classList.add('hidden');
+        }
+
+        function descriptografarTexto() {
+            const textoOriginal = document.getElementById('textoOriginal').value;
+            if (textoOriginal !== textoOriginal.toLowerCase()) {
+                alert("Por favor, use apenas letras minúsculas.");
+                return;
+            }
+            const textoDescriptografado = descriptografar(textoOriginal.toLowerCase(), regrasInversao);
+            document.getElementById('textoCriptografado').value = textoDescriptografado;
+
+            // Mostrar botão de copiar e esconder imagens e avatar
+            document.getElementById('botaoCopy').classList.remove('hidden');
+            document.getElementById('imgSemMSG').classList.add('hidden');
+            document.getElementById('avatar').classList.add('hidden');
+        }
+
+        function funcCopy() {
+            const textoCriptografado = document.getElementById('textoCriptografado');
+            textoCriptografado.select();
+            textoCriptografado.setSelectionRange(0, 99999); // Para dispositivos móveis
+            document.execCommand('copy');
+            alert("Texto copiado: " + textoCriptografado.value);
+        }
+    </script>
+</body>
+</html>

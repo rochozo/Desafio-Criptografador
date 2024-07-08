@@ -1,0 +1,23 @@
+
+             .--./      `.          .-""-.
+          .'    `.__,"\  \  ___  .' _    \
+         :  _  _  :    \  `"   "' ,' \   /
+       .-|  _  _  |-.   Y        Y    `-'
+      ((_| (O)(O) |_))  |  _  _  |
+       `-|  .--.  |-'   | (o)(o) |
+       .-' (    ) `-.   /   __   \
+      / .-._`--'_.-. \ |   /# \   |
+     ( (n   uuuu   n) )|   \__/   |
+      `.`"=nnnnnn="'.'  \        /   _
+        `-.______.-'   _ `.____.' _ / )-,
+         _/\|  |/\__ .' `-"    "-' (_/ / )
+      .w'/\ \__/ /\w/               |_/ / )
+    .-\w(( \/  \/ ))|   |            `-(_/
+   /  |ww\\ \  / //w|   |           |   \
+  /   |www\\/`'\//ww|   |           |\   \
+ /    |wwww\\  //www|   |           | \   \
+/     /wwwww\\//wwww|   |           |  \hjw\
+
+O QUE IMPORTA É CONSEGUIR, O CÓDIGO FOI ESCRITO DIRETAMENTE NO HTML, VERIFICAR <script>
+TEREI PESADELOS COM ITERAÇÕES
+
